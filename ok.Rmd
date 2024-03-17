@@ -1,0 +1,142 @@
+---
+title: "R y Python"
+output: html_document
+---
+
+<center>
+
+# [***inserte codigo de pyhton en los chunks de rmarkdon***]{style="color:pink"}
+
+este es un documento de tipo HTML [ \*\*\_generado automaticamente\*\* ]{style=" color:green"} utilizando [\*\*\_RMarkdown\*\*]{style="color:orange"}
+
+<br>
+
+```{r setup , echo=FALSE , warning=FALSE}
+
+library(reticulate)
+
+```
+
+```{r}
+Sys.setenv(RETICULATE_PYTHON = "C:/Users/limco/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Anaconda3 (64-bit)/Anaconda Navigator.lnk")
+
+```
+
+###br
+
+```{python}
+
+a = "¡Hola, mundo!"
+print(a)
+
+```
+
+```{r}
+install.packages("datos")
+library(datos)
+library(tidyverse)
+```
+
+```{r}
+vuelos
+```
+
+```{r}
+vuelos
+```
+
+```{r}
+flights <- as.data.frame(vuelos)
+```
+
+```{r}
+# Pasar el dataframe de R a Python
+library(reticulate)
+
+# Pasar el dataframe de R a Python
+py$flights <- flights
+
+
+```
+
+```{python}
+# Ver las primeras filas del DataFrame
+print("Primeras filas del DataFrame:")
+print(flights.head())
+
+```
+
+```{python}
+# Ver los nombres de las columnas del DataFrame
+print("Nombres de las columnas del DataFrame:")
+print(flights.columns)
+
+
+```
+
+```{python}
+# Verificar si hay valores nulos en el DataFrame
+print("\nValores nulos en el DataFrame:")
+print(flights.isnull().sum())
+
+```
+
+```{python}
+# Graficar el número de vuelos por aerolínea
+
+
+
+# value counts para contar de vuelos por aerolínea
+flight_counts = flights['aerolinea'].value_counts()
+
+# Coloreamos 
+colors = plt.cm.tab10(range(len(flight_counts)))
+
+# Crear el gráfico de barras horizontal
+plt.figure(figsize=(10, 8))
+flight_counts.sort_values().plot(kind='barh', color=colors)
+plt.title('Número de vuelos por aerolínea')
+plt.xlabel('Número de vuelos')
+plt.ylabel('Aerolínea')
+plt.grid(axis='x', linestyle='--', alpha=0.7)
+plt.show()
+
+
+```
+```{python}
+
+# Importar la librería pandas
+import pandas as pd
+
+```
+
+
+
+
+```{python}
+
+
+# Número de vuelos por día
+num_flights_per_day = py_flights.groupby(['anio', 'mes', 'dia']).size().reset_index(name='num_vuelos')
+
+```
+
+
+```{python}
+# Promedio de retraso en la salida por aerolínea
+avg_delay_per_airline = py_flights.groupby('aerolinea')['atraso_salida'].mean().reset_index(name='promedio_retraso')
+```
+
+
+
+```{python}
+# Número de vuelos por día
+num_flights_per_day = py_flights.groupby(['anio', 'mes', 'dia']).size().reset_index(name='num_vuelos')
+
+# Promedio de retraso en la salida por aerolínea
+avg_delay_per_airline = py_flights.groupby('aerolinea')['atraso_salida'].mean().reset_index(name='promedio_retraso')
+
+```
+
+
+
